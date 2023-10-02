@@ -1,31 +1,31 @@
 variable "resource_group_name" {
-    type = string
+  type = string
 }
 
 variable "resource_group_location" {
-    type = string
+  type = string
 }
 
 variable "subnet_id" {
-    type = string
+  type = string
 }
 
 variable "vm_size" {
-    type = string
-    default = "Standard_F2"
+  type    = string
+  default = "Standard_F2"
 }
 
-variable "vm_name_prefix" {
-    type = string
-    default = "vm"
+variable "vm_name" {
+  description = "Name of the virtual machine. If not provided, a random name will be generated"
+  type    = string
+  default = ""
 }
 
 variable "vm_username" {
-    type = string
-    default = "admin"
+  type    = string
 }
 
 variable "vm_secret" {
-    type = string
-    sensitive = true
+  type      = string
+  sensitive = true
 }
