@@ -37,8 +37,8 @@ module "az_keyvault" {
 
 module "az_network" {
   source                      = "./modules/az_network"
-  vnet_name                   = var.vnet_name
-  vnet_address_space          = var.vnet_address_space
+  virtual_network_name                   = var.vnet_name
+  virtual_network_address_space          = var.vnet_address_space
   resource_group_name         = azurerm_resource_group.rg.name
   resource_group_location     = azurerm_resource_group.rg.location
   subnet_address_prefixes     = var.subnet_address_prefixes
@@ -49,7 +49,7 @@ module "az_vm" {
   source                  = "./modules/az_vm"
   resource_group_name     = azurerm_resource_group.rg.name
   resource_group_location = azurerm_resource_group.rg.location
-  subnet_id               = module.az_network.subnet.id
+  subnet_id               = module.az_network.subnet[0].id
   vm_username             = var.vm_username
   vm_secret               = var.vm_secret
 }
