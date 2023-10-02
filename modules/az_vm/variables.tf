@@ -27,5 +27,8 @@ variable "vm_username" {
 
 variable "vm_secret" {
   type      = string
-  sensitive = true
+}
+
+variable "keyvault_id" {
+  type =  string
 }

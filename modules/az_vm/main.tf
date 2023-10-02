@@ -48,3 +48,15 @@ resource "azurerm_windows_virtual_machine" "vm" {
     caching              = "ReadWrite"
   }
 }
+
+resource "azurerm_key_vault_secret" "kv_username" {
+  name         = "${azurerm_windows_virtual_machine.vm.name}-username"
+  value        = azurerm_windows_virtual_machine.vm.admin_username
+  key_vault_id = var.keyvault_id
+}
+
+resource "azurerm_key_vault_secret" "kv_secret" {
+  name         = "${azurerm_windows_virtual_machine.vm.name}-secret"
+  value        = azurerm_windows_virtual_machine.vm.admin_password
+  key_vault_id = var.keyvault_id
+}

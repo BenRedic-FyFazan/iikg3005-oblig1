@@ -31,8 +31,8 @@ module "az_keyvault" {
   source                             = "./modules/az_keyvault"
   resource_group_location            = azurerm_resource_group.rg.location
   resource_group_name                = azurerm_resource_group.rg.name
-  storage_account_name               = module.az_storage.storage_account_name
-  storage_account_primary_access_key = module.az_storage.storage_account_primary_access_key
+  storage_account_name               = module.az_storage.storage_account.name
+  storage_account_primary_access_key = module.az_storage.storage_account.primary_access_key
 }
 
 module "az_network" {
@@ -52,4 +52,5 @@ module "az_vm" {
   subnet_id               = module.az_network.subnet[0].id
   vm_username             = var.vm_username
   vm_secret               = var.vm_secret
+  keyvault_id             = module.az_keyvault.key_vault.id
 }
