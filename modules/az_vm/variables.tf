@@ -11,6 +11,7 @@ variable "subnet_id" {
 }
 
 variable "vm_size" {
+  description = "Size of the Virtual Machine - Must be an azure-VM size. Defaults to 'Standard_F2'"
   type    = string
   default = "Standard_F2"
 }
@@ -22,13 +23,16 @@ variable "vm_name" {
 }
 
 variable "vm_username" {
+  description = "Username for the VM administrator"
   type = string
 }
 
 variable "vm_secret" {
+  description = "Password for the VM administrator"
   type = string
 }
 
 variable "keyvault_id" {
+  description = "The keyvault to store the VM secrets in"
   type = string
 }

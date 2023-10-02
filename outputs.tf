@@ -12,6 +12,7 @@ output "sa_name" {
 
 output "sa_primary_access_key" {
   value = module.az_keyvault.storage_account_access_key
+  sensitive = true
 }
 
 output "sc_name" {
@@ -41,12 +42,18 @@ output "network_security_group" {
   value = module.az_network.nsg.name
 }
 
-output "vm_username" {
-  value     = module.az_vm.admin_username
-  sensitive = true
+output "vm" {
+  value = {
+    name = module.az_vm.vm.name
+    pip = module.az_vm.public_ip.ip_address
+  }
 }
 
-output "vm_secret" {
-  value     = module.az_vm.admin_secret
+output "vm_credentials" {
+  value = {
+    admin_username = module.az_vm.admin_username.value
+    admin_password = module.az_vm.admin_secret.value
+
+  }
   sensitive = true
 }

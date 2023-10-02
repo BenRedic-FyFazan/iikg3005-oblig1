@@ -1,4 +1,4 @@
-output "vmm_nic" {
+output "vm_nic" {
   value = azurerm_network_interface.vm_nic
 }
 
