@@ -8,10 +8,6 @@ variable "az_credentials" {
   })
 }
 
-variable "resource_group_name" {
-  type = string
-}
-
 variable "storage_account_replication_type" {
   type = string
 }

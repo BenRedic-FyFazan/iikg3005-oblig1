@@ -16,7 +16,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "${local.name_prefix}-rg-${var.resource_group_name}"
+  name     = "rg-${local.location}-${local.client_name}"
   location = local.location
 }
 
@@ -36,13 +36,13 @@ module "az_keyvault" {
 }
 
 module "az_network" {
-  source                      = "./modules/az_network"
-  virtual_network_name                   = var.vnet_name
-  virtual_network_address_space          = var.vnet_address_space
-  resource_group_name         = azurerm_resource_group.rg.name
-  resource_group_location     = azurerm_resource_group.rg.location
-  subnet_address_prefixes     = var.subnet_address_prefixes
-  network_security_group_name = var.network_security_group_name
+  source                        = "./modules/az_network"
+  virtual_network_name          = var.vnet_name
+  virtual_network_address_space = var.vnet_address_space
+  resource_group_name           = azurerm_resource_group.rg.name
+  resource_group_location       = azurerm_resource_group.rg.location
+  subnet_address_prefixes       = var.subnet_address_prefixes
+  network_security_group_name   = var.network_security_group_name
 }
 
 module "az_vm" {

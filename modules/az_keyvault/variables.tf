@@ -12,8 +12,8 @@ variable "storage_account_name" {
 
 variable "keyvault_name" {
   description = "Name of the keyvault to be made. If no name is provided, one will be created randomly"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "storage_account_primary_access_key" {

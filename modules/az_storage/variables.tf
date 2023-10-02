@@ -10,14 +10,14 @@ variable "resource_group_location" {
 
 variable "storage_account_name" {
   description = "Name of the storage account. If none are provided, a name will be generated randomly."
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "storage_container_name" {
   description = "Name of the storage account. If none are provided, a name will be generated randomly."
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "storage_account_tier" {

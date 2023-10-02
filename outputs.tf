@@ -7,7 +7,7 @@ output "rg_location" {
 }
 
 output "sa_name" {
-    value = module.az_storage.storage_account.name
+  value = module.az_storage.storage_account.name
 }
 
 output "sa_primary_access_key" {
@@ -15,11 +15,11 @@ output "sa_primary_access_key" {
 }
 
 output "sc_name" {
-    value = module.az_storage.storage_container.name
+  value = module.az_storage.storage_container.name
 }
 
 output "kv_name" {
-    value = module.az_keyvault.key_vault.name
+  value = module.az_keyvault.key_vault.name
 }
 
 output "vnet_name" {
@@ -27,17 +27,13 @@ output "vnet_name" {
 }
 
 output "vnet_address_space" {
-  value = module.az_network.vnet.address_space
+  value = module.az_network.vnet.address_space[0]
 }
 
 output "subnets" {
-    description = "Map of subnet names to their corresponding details"
-    value = {
-    for i, subnet in module.module.az_network.subnet : 
-    subnet.name => {
-      subnet_name = subnet.name,
-      address_prefix = element(var.subnet_address_prefixes, i)
-    }
+  description = "Map of subnet names to their corresponding subnet_prefix"
+  value = {
+    for i, subnet in module.az_network.subnet : subnet.name => element(var.subnet_address_prefixes, i)
   }
 }
 
@@ -46,11 +42,11 @@ output "network_security_group" {
 }
 
 output "vm_username" {
-  value = module.az_vm.kv_username
+  value     = module.az_vm.admin_username
   sensitive = true
 }
 
 output "vm_secret" {
-  value = module.az_vm.kv_secret
+  value     = module.az_vm.admin_secret
   sensitive = true
 }

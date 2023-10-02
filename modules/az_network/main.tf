@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 resource "random_pet" "subnet_name" {
-  count = length(var.subnet_address_prefixes)
+  count  = length(var.subnet_address_prefixes)
   length = 2
   prefix = "subnet"
 }

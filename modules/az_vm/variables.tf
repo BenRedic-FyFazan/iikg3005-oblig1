@@ -17,18 +17,18 @@ variable "vm_size" {
 
 variable "vm_name" {
   description = "Name of the virtual machine. If not provided, a random name will be generated"
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "vm_username" {
-  type    = string
+  type = string
 }
 
 variable "vm_secret" {
-  type      = string
+  type = string
 }
 
 variable "keyvault_id" {
-  type =  string
+  type = string
 }
